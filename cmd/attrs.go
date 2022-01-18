@@ -1,4 +1,4 @@
-package piratefetch
+package cmd
 
 import (
 	"fmt"
