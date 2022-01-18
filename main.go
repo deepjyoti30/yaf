@@ -7,6 +7,10 @@ import (
 )
 
 func main() {
-	username := util.GetUser()
-	fmt.Println("", username)
+	var details = map[string]string{
+		"username": util.GetUser(),
+		"hostname": util.GetHostname(),
+		"distro":   util.GetDistroName(),
+	}
+	fmt.Println(details)
 }
