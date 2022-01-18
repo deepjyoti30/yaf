@@ -3,6 +3,7 @@ package util
 import (
 	"os"
 	"regexp"
+	"runtime"
 )
 
 // Get the Distro name
@@ -25,7 +26,7 @@ func GetDistroName() string {
 		return parseOsReleaseContent(string(content))
 	}
 
-	return ""
+	return runtime.GOOS
 }
 
 // Parse the LSB content, use regex to find the distro name
