@@ -13,6 +13,7 @@ func main() {
 		"distro":   util.GetDistroName(),
 		"kernel":   util.GetKernalVersion(),
 		"shell":    util.GetShell(),
+		"uptime":   util.GetUptime(),
 	}
 	fmt.Println(details)
 }
