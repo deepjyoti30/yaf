@@ -12,6 +12,7 @@ func main() {
 		"hostname": util.GetHostname(),
 		"distro":   util.GetDistroName(),
 		"kernel":   util.GetKernalVersion(),
+		"shell":    util.GetShell(),
 	}
 	fmt.Println(details)
 }
