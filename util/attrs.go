@@ -3,6 +3,7 @@ package util
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -41,4 +42,31 @@ func GetShell() string {
 
 	// Return the last item
 	return splittedContent[lenSplitted-1]
+}
+
+// Get the uptime of the system based on the /proc/uptime file
+func GetUptime() string {
+	var procFile = "/proc/uptime"
+
+	content, err := os.ReadFile(procFile)
+	if err != nil {
+		fmt.Println("error occurred while reading uptime file")
+		return ""
+	}
+
+	// Find the uptime in seconds
+	splittedContent := strings.Split(string(content), " ")
+	uptimeParsed, parseErr := strconv.ParseFloat(splittedContent[0], 64)
+	if parseErr != nil {
+		fmt.Println("error occurred while parsing uptime string to float")
+		return ""
+	}
+
+	// Convert to integer
+	uptime := int(uptimeParsed)
+
+	hours := uptime / (60 * 60)
+	minutes := (uptime % (60 * 60)) / 60
+
+	return fmt.Sprint(hours, "h ", minutes, "m")
 }
