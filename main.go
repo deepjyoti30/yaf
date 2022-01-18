@@ -3,9 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/deepjyoti30/piratefetch/cmd"
+	"github.com/deepjyoti30/piratefetch/util"
 )
 
 func main() {
-	fmt.Println("", cmd.GetUser())
+	username := util.GetUser()
+	fmt.Println("", username)
 }

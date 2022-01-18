@@ -1,4 +1,4 @@
-package cmd
+package util
 
 import (
 	"fmt"
@@ -6,13 +6,13 @@ import (
 )
 
 // Get the name of the user by reading the $USER variable
-func getUser() string {
+func GetUser() string {
 	var username = os.Getenv("USER")
 	return username
 }
 
 // Get the hostname by reading it from the /etc/hostname file
-func getHostname() string {
+func GetHostname() string {
 	var hostnameFile = "/etc/hostname"
 
 	content, err := os.ReadFile(hostnameFile)
