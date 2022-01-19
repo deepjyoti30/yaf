@@ -13,10 +13,10 @@ func FormatKeyValue(key string, value string) string {
 	lengthKey := utf8.RuneCountInString(key)
 
 	if lengthKey < 6 {
-		// Add the remaining chars by spaces plus two chars
-		// for separation
-		key += strings.Repeat(" ", 6-lengthKey+2)
+		// Add the remaining chars by spaces
+		key += strings.Repeat(" ", (6 - lengthKey))
 	}
 
-	return fmt.Sprint(key, value)
+	// Add two spaces in between
+	return fmt.Sprint(key, "  ", value)
 }
