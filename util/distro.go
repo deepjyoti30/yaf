@@ -33,7 +33,7 @@ func GetDistroName() string {
 // and return it accordingly.
 func parseLsbContent(content string) string {
 	// Replace all newlines and " with nothing
-	content = replaceSpecialChars(content)
+	content = replaceSpecialChars(content, "\n|\"")
 
 	re := regexp.MustCompile(".*?DISTRIB_DESCRIPTION=")
 	cleanedStr := re.ReplaceAllString(content, "")
@@ -45,7 +45,7 @@ func parseLsbContent(content string) string {
 // and return it accordingly.
 func parseOsReleaseContent(content string) string {
 	// Clean the data
-	content = replaceSpecialChars(content)
+	content = replaceSpecialChars(content, "\n|\"")
 
 	// Remove the content before the PRETTY_NAME field
 	beforeMatch := regexp.MustCompile(".*?PRETTY_NAME=")
@@ -60,8 +60,8 @@ func parseOsReleaseContent(content string) string {
 }
 
 // Replace special chars to make the text clean
-func replaceSpecialChars(content string) string {
-	unwantedChar := regexp.MustCompile("\n|\"")
+func replaceSpecialChars(content string, pattern string) string {
+	unwantedChar := regexp.MustCompile(pattern)
 	content = unwantedChar.ReplaceAllString(content, "")
 	return content
 }

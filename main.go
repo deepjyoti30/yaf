@@ -14,6 +14,7 @@ func main() {
 		"kernel":   util.GetKernalVersion(),
 		"shell":    util.GetShell(),
 		"uptime":   util.GetUptime(),
+		"memory":   util.GetMemory(),
 	}
 	fmt.Println(details)
 }
