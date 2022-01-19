@@ -18,21 +18,28 @@ func main() {
 		"uptime":   util.GetUptime(),
 		"memory":   util.GetMemory(),
 	}
-	fmt.Println(generateRightContent(details))
-	fmt.Println(util.GetPirateAscii())
+
+	rightContent := generateRightContent(details)
+
+	for _, value := range rightContent {
+		fmt.Println(value)
+	}
 }
 
 // Generate an array of strings to print line by line when
 // fetch is called.
 func generateRightContent(details map[string]string) []string {
 	// First line should be empty
-	var lines = []string{""}
+	var lines = make([]string, 1)
 
 	// Username and hostname
 	lines = append(lines, fmt.Sprint(details["username"], "@", details["hostname"]))
 
 	// Add a separator line
 	lines = append(lines, strings.Repeat("=", utf8.RuneCountInString(lines[1])))
+
+	// Add an empty line
+	lines = append(lines, "")
 
 	// Except username and hostname add rest into proper format
 	for key, value := range details {

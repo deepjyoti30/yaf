@@ -21,7 +21,7 @@ func GetHostname() string {
 
 	content, err := os.ReadFile(hostnameFile)
 	if err == nil {
-		return string(content)
+		return replaceSpecialChars(string(content), "\n")
 	}
 
 	hostname, err := os.Hostname()
