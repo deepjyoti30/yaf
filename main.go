@@ -11,11 +11,13 @@ import (
 // Declare vars
 var (
 	separator string
+	keyPrefix string
 	align     string
 )
 
 func init() {
 	flag.StringVar(&separator, "separator", "  ", "Separator to be used between the key and the value")
+	flag.StringVar(&keyPrefix, "key-prefix", "▪ ", "Prefix to be set before the key is printed")
 	flag.StringVar(&align, "align", "left", fmt.Sprint("Alignment of the content. Allowed values are: ", strings.Join(util.ArgsDefaultValues().Align, ", ")))
 }
 
@@ -33,7 +35,7 @@ func main() {
 		"memory":   util.GetMemory(),
 	}
 
-	rightContent := util.GenerateContent(details, separator)
+	rightContent := util.GenerateContent(details, separator, keyPrefix)
 
 	for _, value := range rightContent {
 		fmt.Println(value)
