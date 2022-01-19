@@ -1,3 +1,3 @@
-module github.com/deepjyoti30/piratefetch
+module github.com/deepjyoti30/yaf
 
 go 1.16

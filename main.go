@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/deepjyoti30/piratefetch/util"
+	"github.com/deepjyoti30/yaf/util"
 )
 
 func main() {
