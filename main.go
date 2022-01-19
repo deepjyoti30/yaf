@@ -17,4 +17,5 @@ func main() {
 		"memory":   util.GetMemory(),
 	}
 	fmt.Println(details)
+	fmt.Println(util.GetPirateAscii())
 }
