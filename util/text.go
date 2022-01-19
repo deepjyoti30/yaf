@@ -4,6 +4,15 @@ import (
 	"fmt"
 	"strings"
 	"unicode/utf8"
+
+	"github.com/fatih/color"
+)
+
+var (
+	boldGreen  func(a ...interface{}) string = color.New(color.Bold, color.FgGreen).SprintFunc()
+	boldRed    func(a ...interface{}) string = color.New(color.FgRed).SprintFunc()
+	boldYellow func(a ...interface{}) string = color.New(color.Bold, color.FgYellow).SprintFunc()
+	green      func(a ...interface{}) string = color.New(color.FgGreen).SprintFunc()
 )
 
 // Format the key value into one string such that the key
@@ -18,7 +27,7 @@ func FormatKeyValue(key string, value string, separator string, keyPrefix string
 	}
 
 	// Add two spaces in between
-	return fmt.Sprint(keyPrefix, key, separator, value)
+	return fmt.Sprint(boldRed(keyPrefix), boldYellow(key), separator, green(value))
 }
 
 // Generate an array of strings to print line by line when
@@ -28,10 +37,12 @@ func GenerateContent(details map[string]string, separator string, keyPrefix stri
 	var lines = make([]string, 1)
 
 	// Username and hostname
-	lines = append(lines, fmt.Sprint(details["username"], "@", details["hostname"]))
+	lines = append(lines, fmt.Sprint(boldGreen(details["username"]), boldYellow("@"), boldGreen(details["hostname"])))
 
 	// Add a separator line
-	lines = append(lines, strings.Repeat("━", utf8.RuneCountInString(lines[1])))
+	// Add 1 for the length of the `@`
+	separatorCount := utf8.RuneCountInString(details["username"]) + utf8.RuneCountInString(details["hostname"]) + 1
+	lines = append(lines, boldRed(strings.Repeat("━", separatorCount)))
 
 	// Add an empty line
 	lines = append(lines, "")
@@ -44,6 +55,9 @@ func GenerateContent(details map[string]string, separator string, keyPrefix stri
 
 		lines = append(lines, FormatKeyValue(key, value, separator, keyPrefix))
 	}
+
+	// Add empty line at the end
+	lines = append(lines, "")
 
 	return lines
 }
