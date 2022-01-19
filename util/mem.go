@@ -32,7 +32,7 @@ func parseMemory(content string) string {
 	memTotal := extractMemFieldIntoInt(content, "MemTotal")
 
 	memUsedPercentage := int((float64(memTotal-memAvailable) / float64(memTotal)) * 100)
-	return fmt.Sprint(memUsedPercentage, "% of ", (memTotal / 1000), "MB")
+	return fmt.Sprint(memUsedPercentage, "% of ", (memTotal / 1000), "m")
 }
 
 // Extract the passed field into integer from the memory
