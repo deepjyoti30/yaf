@@ -14,16 +14,23 @@ func GetUser() string {
 }
 
 // Get the hostname by reading it from the /etc/hostname file
+// If the file is not accessible try using Go's os to get the
+// hostname as a fallback.
 func GetHostname() string {
 	var hostnameFile = "/etc/hostname"
 
 	content, err := os.ReadFile(hostnameFile)
+	if err == nil {
+		return string(content)
+	}
+
+	hostname, err := os.Hostname()
 	if err != nil {
-		fmt.Println("error occurred while reading hostname")
+		fmt.Println("error reading hostname", err)
 		return ""
 	}
 
-	return string(content)
+	return hostname
 }
 
 // Get the shell by reading the $SHELL variable
