@@ -18,7 +18,7 @@ func FormatKeyValue(key string, value string, separator string) string {
 	}
 
 	// Add two spaces in between
-	return fmt.Sprint(key, separator, value)
+	return fmt.Sprint("▪ ", key, separator, value)
 }
 
 // Generate an array of strings to print line by line when
