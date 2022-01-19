@@ -9,7 +9,7 @@ import (
 // Format the key value into one string such that the key
 // string should be of length 6 (since memory is the longest word)
 // with 2 spaces in between the key and value.
-func FormatKeyValue(key string, value string) string {
+func FormatKeyValue(key string, value string, separator string) string {
 	lengthKey := utf8.RuneCountInString(key)
 
 	if lengthKey < 6 {
@@ -18,12 +18,12 @@ func FormatKeyValue(key string, value string) string {
 	}
 
 	// Add two spaces in between
-	return fmt.Sprint(key, "  ", value)
+	return fmt.Sprint(key, separator, value)
 }
 
 // Generate an array of strings to print line by line when
 // fetch is called.
-func GenerateContent(details map[string]string) []string {
+func GenerateContent(details map[string]string, separator string) []string {
 	// First line should be empty
 	var lines = make([]string, 1)
 
@@ -42,7 +42,7 @@ func GenerateContent(details map[string]string) []string {
 			continue
 		}
 
-		lines = append(lines, FormatKeyValue(key, value))
+		lines = append(lines, FormatKeyValue(key, value, separator))
 	}
 
 	return lines
