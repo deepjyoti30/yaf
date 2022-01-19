@@ -36,7 +36,7 @@ func generateRightContent(details map[string]string) []string {
 	lines = append(lines, fmt.Sprint(details["username"], "@", details["hostname"]))
 
 	// Add a separator line
-	lines = append(lines, strings.Repeat("=", utf8.RuneCountInString(lines[1])))
+	lines = append(lines, strings.Repeat("━", utf8.RuneCountInString(lines[1])))
 
 	// Add an empty line
 	lines = append(lines, "")
