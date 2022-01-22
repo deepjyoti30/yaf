@@ -12,7 +12,7 @@
 
 <br/>
 
-### \[[Brief](#brief)] \[[Support](#support)] \[[Installation](#installation)]
+### \[[Support](#support)] \[[Installation](#installation)] \[[Usage](#usage)]
 <br/>
 </div>
 
