@@ -32,7 +32,7 @@ func FormatKeyValue(key string, value string, separator string, keyPrefix string
 
 // Generate an array of strings to print line by line when
 // fetch is called.
-func GenerateContent(details map[string]string, separator string, keyPrefix string) []string {
+func GenerateContent(details map[string]string, separator string, keyPrefix string, fieldsToExclude []string) []string {
 	// First line should be empty
 	var lines = make([]string, 1)
 
@@ -47,12 +47,17 @@ func GenerateContent(details map[string]string, separator string, keyPrefix stri
 	// Add an empty line
 	lines = append(lines, "")
 
+	// Delete the username and hostname keys from map
+	delete(details, "username")
+	delete(details, "hostname")
+
+	// Delete the fields to exclude from the map
+	for _, fieldToExclude := range fieldsToExclude {
+		delete(details, fieldToExclude)
+	}
+
 	// Except username and hostname add rest into proper format
 	for key, value := range details {
-		if key == "username" || key == "hostname" {
-			continue
-		}
-
 		lines = append(lines, FormatKeyValue(key, value, separator, keyPrefix))
 	}
 

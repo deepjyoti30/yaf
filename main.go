@@ -44,7 +44,10 @@ func main() {
 		"disk":     util.GetDiskUsage(),
 	}
 
-	rightContent := util.GenerateContent(details, separator, keyPrefix)
+	// Parse the fields to exclude string
+	fieldsToExclude := util.ParseExcludeFields(excludeFields)
+
+	rightContent := util.GenerateContent(details, separator, keyPrefix, fieldsToExclude)
 
 	for _, value := range rightContent {
 		fmt.Println(value)
