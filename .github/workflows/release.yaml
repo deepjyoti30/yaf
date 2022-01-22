@@ -1,0 +1,41 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - "test-workflow"
+
+jobs:
+  publish:
+    name: Publish for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: yaf
+            asset_name: yaf-linux-amd64
+          - os: windows-latest
+            artifact_name: yaf.exe
+            asset_name: yaf-windows-amd64
+          - os: macos-latest
+            artifact_name: yaf
+            asset_name: yaf-macos-amd64
+
+    steps:
+    - name: Setup Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: '1.16'
+    - name: Print Go version
+      run: go version
+    - uses: actions/checkout@v2
+    - name: Build
+      run: go build -o build/${{ matrix.artifact_name }} .
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.BUILD_TOKEN }}
+        file: build/${{ matrix.artifact_name }}
+        asset_name: ${{ matrix.asset_name }}
+        tag: ${{ github.ref }}
