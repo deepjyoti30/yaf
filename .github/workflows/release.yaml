@@ -1,11 +1,8 @@
 name: Publish
 
 on:
-  - push:
-     tags:
-      - '*'
-  - push:
-     branches:
+  push:
+    branches:
       - "test-workflow"
 
 jobs:
