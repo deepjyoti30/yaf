@@ -83,4 +83,4 @@ If you like this package and my [other works](https://github.com/deepjyoti30), y
 
 ## Contribution
 
-Your contribution would be appreciated. Consider taking a look at the [guidelines]() before opening a PR. If you just want a new feature added, you can open a feature request!
+Your contribution would be appreciated. Consider taking a look at the [guidelines](https://github.com/deepjyoti30/yaf/blob/master/.github/CONTRIBUTING.md) before opening a PR. If you just want a new feature added, you can open a feature request!
