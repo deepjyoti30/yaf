@@ -1,7 +1,7 @@
 <h1 alt="logo" align="center">Yaf - Yet Another Fetch</h1>
 <h4 align="center">A command line system information tool written in Go</h4>
 <div align="center">
-<img src="https://i.imgur.com/wjhCfnM.png" alt="yaf">
+<img src="https://i.imgur.com/nOceLGj.png" alt="yaf">
 </div>
 
 <br/>
