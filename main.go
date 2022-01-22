@@ -11,15 +11,17 @@ import (
 
 // Declare vars
 var (
-	separator string
-	keyPrefix string
-	noColor   bool
+	separator     string
+	keyPrefix     string
+	noColor       bool
+	excludeFields string
 )
 
 func init() {
 	flag.StringVar(&separator, "separator", "  ", "Separator to be used between the key and the value")
 	flag.StringVar(&keyPrefix, "key-prefix", "▪ ", "Prefix to be set before the key is printed")
 	flag.BoolVar(&noColor, "no-color", false, "Disable showing colors in the output")
+	flag.StringVar(&excludeFields, "exclude", "", "Exclude the passed fields from output. Values should be comma separated, eg: `disk, os`")
 }
 
 func main() {
