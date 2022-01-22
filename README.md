@@ -1,21 +1,21 @@
 <h1 alt="logo" align="center">Yaf - Yet Another Fetch</h1>
-<p align="center">A command line system information tool written in Go</p>
+<h4 align="center">A command line system information tool written in Go</h4>
+<div align="center">
+<img src="https://i.imgur.com/wjhCfnM.png" alt="yaf">
+</div>
 
+<br/>
 <p align="center">
 <a href="./LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"></a>
 <a href="https://github.com/deepjyoti30/yaf/releases"><img src="https://img.shields.io/github/v/release/deepjyoti30/yaf?style=for-the-badge"></a>
 <img src="https://img.shields.io/badge/Built%20With-Golang-green?style=for-the-badge">
 </p>
 
-<div>
-<img src="https://i.imgur.com/wjhCfnM.png" alt="yaf" align="right" height="240px">
-
 <p>
 Yet Another Fetch is a tool that fetches system information and shows it in a beautiful way for some extra upvotes on r/unixporn. It is extremely minimal and customizability is it's strong feature. Don't want to show your disk usage? Hide it with the `exclude` flag. Want to change the separator between the `os` and `Arch Linux` field? Use `separator` flag.
 
 `yaf` is written in Golang. (Because everyone is writing a fetch in some language, why not Go then?)
 </p>
-</div>
 
 ## Installation
 
