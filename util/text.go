@@ -47,9 +47,8 @@ func GenerateContent(details map[string]string, separator string, keyPrefix stri
 	// Add an empty line
 	lines = append(lines, "")
 
-	// Delete the username and hostname keys from map
-	delete(details, "username")
-	delete(details, "hostname")
+	// NOTE: Username and hostname will be removed from the exclude fields
+	// array.
 
 	// Delete the fields to exclude from the map
 	for _, fieldToExclude := range fieldsToExclude {
