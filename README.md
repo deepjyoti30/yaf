@@ -34,7 +34,19 @@ Get the [latest release](https://github.com/deepjyoti30/yaf/releases) binary fro
 
 ### Arch Linux
 
-You can install it from Arch Linux
+`yaf` can be installed from AUR with the following command:
+
+```console
+yay -S yafetch
+```
+
+or
+
+```console
+paru -S yafetch
+```
+
+>NOTE: `yaf` was taken so had to publish with `yafetch` name.
 
 ### Manual
 
