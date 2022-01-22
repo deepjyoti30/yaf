@@ -6,3 +6,62 @@
 <a href="https://github.com/deepjyoti30/yaf/releases"><img src="https://img.shields.io/github/v/release/deepjyoti30/yaf?style=for-the-badge"></a>
 <img src="https://img.shields.io/badge/Built%20With-Golang-green?style=for-the-badge">
 </p>
+
+<img src="https://raw.githubusercontent.com/deepjyoti30/yaf/master/.github/yaf.jpg" alt="yaf" align="right" height="240px">
+
+## Brief
+
+Yet Another Fetch is a tool that fetches system information and shows it in a beautiful way for some extra upvotes on r/unixporn. It is extremely minimal and customizability is it's strong feature. Don't want to show your disk usage? Hide it with the `exclude` flag. Want to change the separator between the `os` and `Arch Linux` field? Use `separator` flag.
+
+`yaf` is written in Golang. (Because everyone is writing a fetch in some language, why not Go then?)
+
+## Installation
+
+- [Binary](#binary)
+- [Arch Linux](#arch-linux)
+- [Manual](#manual)
+
+### Binary
+
+Get the [latest release](https://github.com/deepjyoti30/yaf/releases) binary from GitHub and use it on your system. Yes, as simple as that.
+
+### Arch Linux
+
+You can install it from Arch Linux
+
+### Manual
+
+If you wish, you can install the package manually using the following:
+
+- Clone the repo: `git clone git@github.com:deepjyoti30/yaf.git`
+- Cd into the repo and use make to install the package: `cd yaf && make install`
+
+> NOTE: You might want to use the mighty `sudo` with the make command above.
+
+## Usage
+
+```console
+Usage of yaf:
+  -exclude disk os
+    	Exclude the passed fields from output. Values should be space separated, eg: disk os (default "username hostname")
+  -key-prefix string
+    	Prefix to be set before the key is printed (default "▪ ")
+  -no-color
+    	Disable showing colors in the output
+  -separator string
+    	Separator to be used between the key and the value (default "  ")
+```
+
+## Support
+
+If you like this package and my [other works](https://github.com/deepjyoti30), your support would be appreciated!
+
+<p align="left">
+<a href="https://www.paypal.me/deepjyoti30" target="_blank"><img alt="undefined" src="https://img.shields.io/badge/paypal-deepjyoti30-blue?style=for-the-badge&logo=paypal"></a>
+<a href="https://www.patreon.com/deepjyoti30" target="_blank"><img alt="undefined" src="https://img.shields.io/badge/Patreon-deepjyoti30-orange?style=for-the-badge&logo=patreon"></a>
+<a href="https://ko-fi.com/deepjyoti30" target="_blank"><img alt="undefined" src="https://img.shields.io/badge/KoFi-deepjyoti30-red?style=for-the-badge&logo=ko-fi"></a>
+</p>
+
+## Contribution
+
+Your contribution would be appreciated. Consider taking a look at the [guidelines]() before opening a PR. If you just want a new feature added, you can open a feature request!
