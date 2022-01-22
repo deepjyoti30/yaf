@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/badge/Built%20With-Golang-green?style=for-the-badge">
 </p>
 
-<img src="https://raw.githubusercontent.com/deepjyoti30/yaf/master/.github/yaf.jpg" alt="yaf" align="right" height="240px">
+<img src="https://i.imgur.com/q9d9KO6.jpg" alt="yaf" align="right" height="240px">
 
 ## Brief
 
