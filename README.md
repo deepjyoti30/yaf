@@ -9,8 +9,6 @@
 
 <img src="https://i.imgur.com/q9d9KO6.jpg" alt="yaf" align="right" height="240px">
 
-## Brief
-
 Yet Another Fetch is a tool that fetches system information and shows it in a beautiful way for some extra upvotes on r/unixporn. It is extremely minimal and customizability is it's strong feature. Don't want to show your disk usage? Hide it with the `exclude` flag. Want to change the separator between the `os` and `Arch Linux` field? Use `separator` flag.
 
 `yaf` is written in Golang. (Because everyone is writing a fetch in some language, why not Go then?)
