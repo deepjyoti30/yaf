@@ -18,12 +18,12 @@ var (
 // Format the key value into one string such that the key
 // string should be of length 6 (since memory is the longest word)
 // with 2 spaces in between the key and value.
-func FormatKeyValue(key string, value string, separator string, keyPrefix string) string {
+func FormatKeyValue(key string, value string, separator string, keyPrefix string, maxKeyLength int) string {
 	lengthKey := utf8.RuneCountInString(key)
 
-	if lengthKey < 6 {
+	if lengthKey < maxKeyLength {
 		// Add the remaining chars by spaces
-		key += strings.Repeat(" ", (6 - lengthKey))
+		key += strings.Repeat(" ", (maxKeyLength - lengthKey))
 	}
 
 	// Add two spaces in between
@@ -55,9 +55,18 @@ func GenerateContent(details map[string]string, separator string, keyPrefix stri
 		delete(details, fieldToExclude)
 	}
 
+	// Find the maximum length key before generating the strings
+	var maxKeyLength int = 0
+	for key := range details {
+		currentKeyLength := utf8.RuneCountInString(key)
+		if currentKeyLength > maxKeyLength {
+			maxKeyLength = currentKeyLength
+		}
+	}
+
 	// Except username and hostname add rest into proper format
 	for key, value := range details {
-		lines = append(lines, FormatKeyValue(key, value, separator, keyPrefix))
+		lines = append(lines, FormatKeyValue(key, value, separator, keyPrefix, maxKeyLength))
 	}
 
 	// Add empty line at the end
