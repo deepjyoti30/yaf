@@ -42,6 +42,7 @@ func main() {
 		"shell":    util.GetShell(),
 		"uptime":   util.GetUptime(),
 		"memory":   util.GetMemory(),
+		"disk":     util.GetDiskUsage(),
 	}
 
 	rightContent := util.GenerateContent(details, separator, keyPrefix)
