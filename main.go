@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"strings"
 
 	"github.com/fatih/color"
 
@@ -14,7 +13,6 @@ import (
 var (
 	separator string
 	keyPrefix string
-	align     string
 	noColor   bool
 )
 
@@ -22,7 +20,6 @@ func init() {
 	flag.StringVar(&separator, "separator", "  ", "Separator to be used between the key and the value")
 	flag.StringVar(&keyPrefix, "key-prefix", "▪ ", "Prefix to be set before the key is printed")
 	flag.BoolVar(&noColor, "no-color", false, "Disable showing colors in the output")
-	flag.StringVar(&align, "align", "left", fmt.Sprint("Alignment of the content. Allowed values are: ", strings.Join(util.ArgsDefaultValues().Align, ", ")))
 }
 
 func main() {
