@@ -49,7 +49,7 @@ paru -S yafetch
 
 >NOTE: `yaf` was taken so had to publish with `yafetch` name.
 
-### Gentoo
+### Gentoo Linux
 
 Create the `/etc/portage/repos.conf/yaf.conf` file as follows:
 
