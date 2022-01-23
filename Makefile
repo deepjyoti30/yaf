@@ -1,5 +1,6 @@
 GC=go build
 BUILD_DIR=build
+DESTDIR=/usr/bin
 
 all:build
 
@@ -9,9 +10,9 @@ build:
 
 install: build
 	@echo "Installing yaf"
-	@cp $(BUILD_DIR)/yaf /usr/bin/yaf
+	@cp $(BUILD_DIR)/yaf $(DESTDIR)/yaf
 	@echo "Setting permissions"
-	@chmod go+x /usr/bin/yaf
+	@chmod go+x $(DESTDIR)/yaf
 
 clean:
 	rm -rf $(BUILD_DIR)
