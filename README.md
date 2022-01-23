@@ -58,7 +58,7 @@ Create the `/etc/portage/repos.conf/yaf.conf` file as follows:
 priority = 50
 location = <repo-location>/yaf
 sync-type = git
-sync-uri = //add link here
+sync-uri = git@github.com:ThamognyaKodi/yaf-gentoo-ebuilds.git
 auto-sync = Yes
 ```
 
