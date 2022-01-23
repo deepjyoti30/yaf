@@ -54,7 +54,7 @@ paru -S yafetch
 Create the `/etc/portage/repos.conf/yaf.conf` file as follows:
 
 ```
-[librewolf]
+[yaf]
 priority = 50
 location = <repo-location>/yaf
 sync-type = git
