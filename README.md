@@ -26,6 +26,7 @@ Yet Another Fetch is a tool that fetches system information and shows it in a be
 
 - [Binary](#binary)
 - [Arch Linux](#arch-linux)
+- [Gentoo Linux](#gentoo-linux)
 - [Manual](#manual)
 
 ### Binary
@@ -47,6 +48,26 @@ paru -S yafetch
 ```
 
 >NOTE: `yaf` was taken so had to publish with `yafetch` name.
+
+### Gentoo
+
+Create the `/etc/portage/repos.conf/yaf.conf` file as follows:
+
+```
+[librewolf]
+priority = 50
+location = <repo-location>/yaf
+sync-type = git
+sync-uri = //add link here
+auto-sync = Yes
+```
+
+Change the `<repo-location>` to anything preferably `/var/db/repos/`
+
+then run `emaint -r yaf sync`
+
+now you can run `root# emerge --ask app-misc/yaf-bin` or `root# emerge --ask app-misc/yaf`
+
 
 ### Manual
 
