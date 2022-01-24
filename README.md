@@ -68,6 +68,7 @@ then run `emaint -r yaf sync`
 
 now you can run `root# emerge --ask app-misc/yaf-bin` or `root# emerge --ask app-misc/yaf`
 
+If there are any issue please make an issue at <a href="https://github.com/ThamognyaKodi/yaf-gentoo-ebuilds" target="_blank">yaf-gentoo-ebuilds</a>
 
 ### Manual
 
