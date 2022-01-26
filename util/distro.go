@@ -11,7 +11,7 @@ import (
 // If it's not there, try the os-release file
 // Use the GOOS var as a fallback
 func GetDistroName() string {
-	var lsbFile = "/etc/lsb-release"
+	var lsbFile = "/etc/lsb-release1"
 	var osReleaseFile = "/etc/os-release"
 
 	// Try the lsb file
@@ -45,15 +45,15 @@ func parseLsbContent(content string) string {
 // and return it accordingly.
 func parseOsReleaseContent(content string) string {
 	// Clean the data
-	content = replaceSpecialChars(content, "\n|\"")
+	content = replaceSpecialChars(content, "\n")
 
 	// Remove the content before the PRETTY_NAME field
-	beforeMatch := regexp.MustCompile(".*?PRETTY_NAME=")
+	beforeMatch := regexp.MustCompile(".*?PRETTY_NAME=\"")
 	content = beforeMatch.ReplaceAllString(content, "")
 
 	// Remove the content after the PRETTY_NAME.
 	// The ID field comes right after PRETTY_NAME
-	afterMatch := regexp.MustCompile("ID.*?$")
+	afterMatch := regexp.MustCompile("\".*?$")
 	content = afterMatch.ReplaceAllString(content, "")
 
 	return content
