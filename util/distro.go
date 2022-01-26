@@ -11,7 +11,7 @@ import (
 // If it's not there, try the os-release file
 // Use the GOOS var as a fallback
 func GetDistroName() string {
-	var lsbFile = "/etc/lsb-release1"
+	var lsbFile = "/etc/lsb-release"
 	var osReleaseFile = "/etc/os-release"
 
 	// Try the lsb file
