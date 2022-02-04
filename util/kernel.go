@@ -7,7 +7,7 @@ import (
 )
 
 // Extract the kernel version by reading the /proc/version file
-func GetKernalVersion() string {
+func GetKernelVersion() string {
 	var procFile = "/proc/version"
 
 	content, err := os.ReadFile(procFile)
