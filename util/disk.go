@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/dustin/go-humanize"
-	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/v3/disk"
 )
 
 // Get disk usage for root
