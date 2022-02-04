@@ -43,5 +43,13 @@ func parseProc(content string) string {
 // OS. This is only called if the generic way to extract kernel
 // fails.
 func detectDarwinKernel() (string, error) {
-	return "", nil
+	outputStr, err := runSysctlCmd("-n kern.version")
+	if err != nil {
+		return "", err
+	}
+
+	extractRe := regexp.MustCompile(`.*?Version\s|:.*`)
+	version := extractRe.ReplaceAllString(outputStr, "")
+
+	return version, nil
 }
