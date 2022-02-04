@@ -27,7 +27,11 @@ func GetKernelVersion() string {
 		kernelErr = errors.New(fmt.Sprint("no OS specific method to get kernel for: ", runtime.GOOS))
 	}
 
-	fmt.Println("couldn't read kernel version: ", kernelErr)
+	if kernelErr != nil {
+		fmt.Println("couldn't read kernel version: ", kernelErr)
+		return ""
+	}
+
 	return kernelVersion
 }
 
@@ -47,6 +51,9 @@ func detectDarwinKernel() (string, error) {
 	if err != nil {
 		return "", err
 	}
+
+	// Remove newlines from the string
+	outputStr = replaceSpecialChars(outputStr, "\n")
 
 	extractRe := regexp.MustCompile(`.*?Version\s|:.*`)
 	version := extractRe.ReplaceAllString(outputStr, "")
