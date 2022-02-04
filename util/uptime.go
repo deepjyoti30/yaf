@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"os/exec"
 	"regexp"
 	"runtime"
 	"strconv"
@@ -60,16 +59,11 @@ func parseUptimeFile(content string) string {
 // by using the sysctl cmd and parsing the string.
 func detectDarwinUptime() (string, error) {
 	// Run the sysctl command to get the uptime string
-	sysctlCmdStr := "sysctl"
-	args := "-n kern.boottime"
-	cmd := exec.Command(sysctlCmdStr, strings.Split(args, " ")...)
-	stdout, err := cmd.Output()
+	outputInStr, err := runSysctlCmd("-n kern.boottime")
 
 	if err != nil {
 		return "", err
 	}
-
-	outputInStr := string(stdout)
 
 	extractBootTime := regexp.MustCompile(`=\s\d+,`)
 	cleanRe := regexp.MustCompile(`=|\s|,`)
