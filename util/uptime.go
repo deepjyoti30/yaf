@@ -60,8 +60,9 @@ func parseUptimeFile(content string) string {
 // by using the sysctl cmd and parsing the string.
 func detectDarwinUptime() (string, error) {
 	// Run the sysctl command to get the uptime string
-	sysctlCmdStr := "sysctl -n kern.boottime"
-	cmd := exec.Command(sysctlCmdStr)
+	sysctlCmdStr := "sysctl"
+	args := "-n kern.boottime"
+	cmd := exec.Command(sysctlCmdStr, strings.Split(args, " ")...)
 	stdout, err := cmd.Output()
 
 	if err != nil {
@@ -89,14 +90,54 @@ func detectDarwinUptime() (string, error) {
 	bootTime := time.Unix(bootTimeInt, 0)
 	duration := time.Since(bootTime)
 
-	return makeDurationReadable(int(duration)), nil
+	return makeDurationReadable(int(duration.Seconds())), nil
 
 }
 
 // makeDurationReadable converts the passed hours and minutes to
 // make them human readable
 func makeDurationReadable(uptime int) string {
-	hours := uptime / (60 * 60)
-	minutes := (uptime % (60 * 60)) / 60
-	return fmt.Sprint(hours, "h ", minutes, "m")
+	indexToTimeMap := map[string]int{
+		"M": 0,
+		"d": 0,
+		"h": 0,
+		"m": 0,
+	}
+
+	// Convert seconds to minutes
+	indexToTimeMap["m"] = uptime / 60
+	if indexToTimeMap["m"] > 60 {
+		indexToTimeMap["h"] = indexToTimeMap["m"] / 60
+		indexToTimeMap["m"] = indexToTimeMap["m"] % 60
+	}
+
+	if indexToTimeMap["h"] > 24 {
+		indexToTimeMap["d"] = indexToTimeMap["h"] / 24
+		indexToTimeMap["h"] = indexToTimeMap["h"] % 24
+	}
+
+	if indexToTimeMap["d"] > 30 {
+		indexToTimeMap["M"] = indexToTimeMap["d"] / 30
+		indexToTimeMap["d"] = indexToTimeMap["d"] % 30
+	}
+
+	const maxDuration = 2
+	var count = 0
+	durationArr := make([]string, 0)
+
+	for timeStr, time := range indexToTimeMap {
+		if count == maxDuration {
+			break
+		}
+
+		if time == 0 {
+			continue
+		}
+
+		durationArr = append(durationArr, fmt.Sprintf("%d%s", time, timeStr))
+
+		count += 1
+	}
+
+	return strings.Join(durationArr, " ")
 }
