@@ -4,7 +4,8 @@ import "strings"
 
 // Store default values for the commandline args
 type DefaultValues struct {
-	Align []string
+	Align   []string
+	Version string
 }
 
 func ArgsDefaultValues() DefaultValues {
@@ -14,6 +15,7 @@ func ArgsDefaultValues() DefaultValues {
 			1: "left",
 			2: "right",
 		},
+		Version: "v0.0.2",
 	}
 }
 
