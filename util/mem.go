@@ -3,6 +3,7 @@ package util
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"regexp"
 	"strconv"
 )
@@ -56,4 +57,48 @@ func extractMemFieldIntoInt(content string, field string) int {
 		return 1
 	}
 	return amountInKb
+}
+
+// detectDarwinMem will detect the memory usage in Darwin
+// OS and return a string that can be showed to the user.
+func detectDarwinMem() (string, error) {
+	// Detect the totalMem
+	outputStr, err := runSysctlCmd("-n hw.memsize")
+	if err != nil {
+		return "", err
+	}
+
+	// Remove newlines
+	outputStr = replaceSpecialChars(outputStr, "\n")
+
+	// It will be an integer in bytes directly, we can convert to
+	// int directly
+	totalMemBytes, err := strconv.Atoi(outputStr)
+	if err != nil {
+		return "", err
+	}
+
+	// Convert the totalMem to MB
+	totalMem := totalMemBytes / 1024 / 1024
+
+	// Extract the used percentage using the memory pressure command
+	memPressureCmd := "memory_pressure"
+	cmd := exec.Command(memPressureCmd)
+	stdout, err := cmd.Output()
+	if err != nil {
+		return "", err
+	}
+
+	memPressureStr := string(stdout)
+
+	// Remove all newlines
+	memPressureStr = replaceSpecialChars(memPressureStr, "\n")
+	extractFreePercentRe := regexp.MustCompile(`.*?System-wide memory free percentage:\s|%`)
+	memFreePercentageStr := extractFreePercentRe.ReplaceAllString(memPressureStr, "")
+	memFreePercentage, err := strconv.Atoi(memFreePercentageStr)
+	if err != nil {
+		return "", err
+	}
+
+	return fmt.Sprintf("%d of %dm", 100-memFreePercentage, totalMem), nil
 }
