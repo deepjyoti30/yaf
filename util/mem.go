@@ -1,10 +1,12 @@
 package util
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
 	"regexp"
+	"runtime"
 	"strconv"
 )
 
@@ -15,12 +17,25 @@ func GetMemory() string {
 	memFile := "/proc/meminfo"
 
 	content, err := os.ReadFile(memFile)
-	if err != nil {
-		fmt.Println("couldn't read the memory file")
+	if err == nil {
+		return parseMemory(string(content))
+	}
+
+	var memErr error
+	var memUsage string = ""
+	switch runtime.GOOS {
+	case "darwin":
+		memUsage, memErr = detectDarwinMem()
+	default:
+		memErr = errors.New(fmt.Sprint("no OS specific method to get mem for: ", runtime.GOOS))
+	}
+
+	if memErr != nil {
+		fmt.Println("couldn't read the memory file: ", memErr)
 		return ""
 	}
 
-	return parseMemory(string(content))
+	return memUsage
 }
 
 // Parse the memory file to extract the available
