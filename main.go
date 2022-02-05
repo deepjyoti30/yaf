@@ -15,6 +15,7 @@ var (
 	keyPrefix     string
 	noColor       bool
 	excludeFields string
+	version       bool
 )
 
 func init() {
@@ -22,6 +23,7 @@ func init() {
 	flag.StringVar(&keyPrefix, "key-prefix", "▪ ", "Prefix to be set before the key is printed")
 	flag.BoolVar(&noColor, "no-color", false, "Disable showing colors in the output")
 	flag.StringVar(&excludeFields, "exclude", "username hostname", "Exclude the passed fields from output. Values should be space separated, eg: `disk os`")
+	flag.BoolVar(&version, "version", false, "Print current version of yaf installed")
 }
 
 func main() {
@@ -31,6 +33,13 @@ func main() {
 	// Disable the color if flag is passed
 	if noColor {
 		color.NoColor = true
+	}
+
+	// If to show version or not
+	if version {
+		// Print the version and exit.
+		fmt.Printf("yaf %s\n", util.ArgsDefaultValues().Version)
+		return
 	}
 
 	var details = map[string]string{
