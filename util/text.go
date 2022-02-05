@@ -2,6 +2,7 @@ package util
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 	"unicode/utf8"
 
@@ -73,4 +74,11 @@ func GenerateContent(details map[string]string, separator string, keyPrefix stri
 	lines = append(lines, "")
 
 	return lines
+}
+
+// Replace special chars to make the text clean
+func replaceSpecialChars(content string, pattern string) string {
+	unwantedChar := regexp.MustCompile(pattern)
+	content = unwantedChar.ReplaceAllString(content, "")
+	return content
 }

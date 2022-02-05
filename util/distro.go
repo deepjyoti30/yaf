@@ -58,10 +58,3 @@ func parseOsReleaseContent(content string) string {
 
 	return content
 }
-
-// Replace special chars to make the text clean
-func replaceSpecialChars(content string, pattern string) string {
-	unwantedChar := regexp.MustCompile(pattern)
-	content = unwantedChar.ReplaceAllString(content, "")
-	return content
-}

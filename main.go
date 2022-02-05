@@ -37,7 +37,7 @@ func main() {
 		"username": util.GetUser(),
 		"hostname": util.GetHostname(),
 		"os":       util.GetDistroName(),
-		"kernel":   util.GetKernalVersion(),
+		"kernel":   util.GetKernelVersion(),
 		"shell":    util.GetShell(),
 		"uptime":   util.GetUptime(),
 		"memory":   util.GetMemory(),
