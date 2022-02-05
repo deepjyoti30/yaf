@@ -115,5 +115,5 @@ func detectDarwinMem() (string, error) {
 		return "", err
 	}
 
-	return fmt.Sprintf("%d of %dm", 100-memFreePercentage, totalMem), nil
+	return fmt.Sprintf("%d%% of %dm", 100-memFreePercentage, totalMem), nil
 }
