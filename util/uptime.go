@@ -98,6 +98,13 @@ func makeDurationReadable(uptime int) string {
 		"m": 0,
 	}
 
+	orderOfTime := []string{
+		"M",
+		"d",
+		"h",
+		"m",
+	}
+
 	// Convert seconds to minutes
 	indexToTimeMap["m"] = uptime / 60
 	if indexToTimeMap["m"] > 60 {
@@ -119,7 +126,8 @@ func makeDurationReadable(uptime int) string {
 	var count = 0
 	durationArr := make([]string, 0)
 
-	for timeStr, time := range indexToTimeMap {
+	for _, timeKey := range orderOfTime {
+		time := indexToTimeMap[timeKey]
 		if count == maxDuration {
 			break
 		}
@@ -128,7 +136,7 @@ func makeDurationReadable(uptime int) string {
 			continue
 		}
 
-		durationArr = append(durationArr, fmt.Sprintf("%d%s", time, timeStr))
+		durationArr = append(durationArr, fmt.Sprintf("%d%s", time, timeKey))
 
 		count += 1
 	}
