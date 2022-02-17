@@ -15,7 +15,7 @@ func ArgsDefaultValues() DefaultValues {
 			1: "left",
 			2: "right",
 		},
-		Version: "v0.0.2",
+		Version: "v0.0.3",
 	}
 }
 
