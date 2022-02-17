@@ -42,15 +42,15 @@ func main() {
 		return
 	}
 
-	var details = map[string]string{
-		"username": util.GetUser(),
-		"hostname": util.GetHostname(),
-		"os":       util.GetDistroName(),
-		"kernel":   util.GetKernelVersion(),
-		"shell":    util.GetShell(),
-		"uptime":   util.GetUptime(),
-		"memory":   util.GetMemory(),
-		"disk":     util.GetDiskUsage(),
+	var details = map[string]util.GetterFunc{
+		"username": util.GetUser,
+		"hostname": util.GetHostname,
+		"os":       util.GetDistroName,
+		"kernel":   util.GetKernelVersion,
+		"shell":    util.GetShell,
+		"uptime":   util.GetUptime,
+		"memory":   util.GetMemory,
+		"disk":     util.GetDiskUsage,
 	}
 
 	// Parse the fields to exclude string
