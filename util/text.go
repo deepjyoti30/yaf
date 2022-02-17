@@ -33,16 +33,16 @@ func FormatKeyValue(key string, value string, separator string, keyPrefix string
 
 // Generate an array of strings to print line by line when
 // fetch is called.
-func GenerateContent(details map[string]string, separator string, keyPrefix string, fieldsToExclude []string) []string {
+func GenerateContent(details map[string]GetterFunc, separator string, keyPrefix string, fieldsToExclude []string) []string {
 	// First line should be empty
 	var lines = make([]string, 1)
 
 	// Username and hostname
-	lines = append(lines, fmt.Sprint(boldGreen(details["username"]), boldYellow("@"), boldGreen(details["hostname"])))
+	lines = append(lines, fmt.Sprint(boldGreen(details["username"]()), boldYellow("@"), boldGreen(details["hostname"]())))
 
 	// Add a separator line
 	// Add 1 for the length of the `@`
-	separatorCount := utf8.RuneCountInString(details["username"]) + utf8.RuneCountInString(details["hostname"]) + 1
+	separatorCount := utf8.RuneCountInString(details["username"]()) + utf8.RuneCountInString(details["hostname"]()) + 1
 	lines = append(lines, boldRed(strings.Repeat("━", separatorCount)))
 
 	// Add an empty line
@@ -67,7 +67,7 @@ func GenerateContent(details map[string]string, separator string, keyPrefix stri
 
 	// Except username and hostname add rest into proper format
 	for key, value := range details {
-		lines = append(lines, FormatKeyValue(key, value, separator, keyPrefix, maxKeyLength))
+		lines = append(lines, FormatKeyValue(key, value(), separator, keyPrefix, maxKeyLength))
 	}
 
 	// Add empty line at the end
