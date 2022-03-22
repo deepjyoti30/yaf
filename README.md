@@ -60,8 +60,7 @@ and then you can do
 ```console
 emerge -a yaf
 ```
-It will ask you to unmask it, as it is still testing for bugs but you can 'bypass' it by doing the following
-
+It will ask you to unmask it, as it is still testing for bugs (this is standard procedure for new ebuilds) hence you can unmask it by doing
 ```console
 emerge yaf --autounmask && dispatch-conf
 ``` 
