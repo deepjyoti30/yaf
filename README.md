@@ -51,24 +51,29 @@ paru -S yafetch
 
 ### Gentoo Linux
 
-Create the `/etc/portage/repos.conf/yaf.conf` file as follows:
-
+You can install yaf, by adding the overlay to layman with this command
+```console
+layman -o https://git.thamognya.com/Thamognya/thamognya-overlay/raw/branch/master/repositories.xml -f -a thamognya-overlay
 ```
-[yaf]
-priority = 50
-location = <repo-location>/yaf
-sync-type = git
-sync-uri = https://github.com/ThamognyaKodi/yaf-gentoo-ebuilds.git
-auto-sync = Yes
+and then you can do 
+
+```console
+emerge -a yaf
+```
+It will ask you to unmask it, as it is still testing for bugs but you can 'bypass' it by doing the following
+
+```console
+emerge yaf --autounmask && dispatch-conf
+``` 
+then type `u` 
+
+and then emerge it with the following command
+
+```console
+emerge -a yaf --autounmask
 ```
 
-Change the `<repo-location>` to anything preferably `/var/db/repos/`
-
-then run `emaint -r yaf sync`
-
-now you can run `root# emerge --ask app-misc/yaf-bin` or `root# emerge --ask app-misc/yaf`
-
-If there are any issue please make an issue at <a href="https://github.com/ThamognyaKodi/yaf-gentoo-ebuilds" target="_blank">yaf-gentoo-ebuilds</a>
+and then install the package how you would normally.
 
 ### Manual
 
