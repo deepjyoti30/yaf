@@ -74,6 +74,30 @@ emerge -a yaf --autounmask
 
 and then install the package how you would normally.
 
+#### Gentoo GURU
+
+If you see this, then the package is officically in the GURU overlay. Install it with
+
+```console
+layman -a guru
+```
+and then you can do 
+
+```console
+emerge -a yaf
+```
+It will ask you to unmask it, as it is still testing for bugs (this is standard procedure for new ebuilds) hence you can unmask it by doing
+```console
+emerge yaf --autounmask && dispatch-conf
+``` 
+then type `u` 
+
+and then emerge it with the following command
+
+```console
+emerge -a yaf --autounmask
+```
+
 ### Manual
 
 If you wish, you can install the package manually using the following:
