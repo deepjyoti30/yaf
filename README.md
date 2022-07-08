@@ -53,50 +53,27 @@ paru -S yafetch
 
 You can install yaf, by adding the overlay to layman with this command
 ```console
-layman -o https://git.thamognya.com/Thamognya/thamognya-overlay/raw/branch/master/repositories.xml -f -a thamognya-overlay
+sudo layman -a thamognya
 ```
 and then you can do 
 
 ```console
-emerge -a yaf
+sudo emerge -a yaf
 ```
 It will ask you to unmask it, as it is still testing for bugs (this is standard procedure for new ebuilds) hence you can unmask it by doing
 ```console
-emerge yaf --autounmask && dispatch-conf
+sudo emerge yaf --autounmask && dispatch-conf
 ``` 
 then type `u` 
 
 and then emerge it with the following command
 
 ```console
-emerge -a yaf --autounmask
+sudo emerge -a yaf --autounmask
 ```
 
 and then install the package how you would normally.
 
-#### Gentoo GURU
-
-If you see this, then the package is officically in the GURU overlay. Install it with
-
-```console
-layman -a guru
-```
-and then you can do 
-
-```console
-emerge -a yaf
-```
-It will ask you to unmask it, as it is still testing for bugs (this is standard procedure for new ebuilds) hence you can unmask it by doing
-```console
-emerge yaf --autounmask && dispatch-conf
-``` 
-then type `u` 
-
-and then emerge it with the following command
-
-```console
-emerge -a yaf --autounmask
-```
 
 ### Manual
 
